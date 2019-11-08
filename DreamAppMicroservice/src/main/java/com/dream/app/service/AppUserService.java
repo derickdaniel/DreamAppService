@@ -7,9 +7,10 @@ import com.dream.app.entity.PersonalNote;
 
 public interface AppUserService {
 	
-	AppUser save(AppUser appUser) throws Exception;
-	AppUser update(AppUser appUser) throws Exception;
-	AppUser getByUserName(String userName);
+	AppUser registerUser(AppUser appUser) throws Exception;
+	AppUser updateUser(AppUser appUser) throws Exception;
+	AppUser getUserByUsername(String userName);
+	AppUser getUserByEmail(String email);
 	PersonalNote savePersonalNote(PersonalNote note);
 	List<PersonalNote> getPersonalNotesByAppUser(AppUser appUser);
 }

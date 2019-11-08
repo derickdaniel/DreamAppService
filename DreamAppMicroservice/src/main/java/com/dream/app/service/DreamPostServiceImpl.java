@@ -1,5 +1,7 @@
 package com.dream.app.service;
 
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -38,12 +40,15 @@ public class DreamPostServiceImpl implements DreamPostService {
 
 	@Override
 	public DreamPost createPost(DreamPost post) {
+		post.setCreatedDate(new Timestamp(new Date().getTime()));
+		post.setModifiedDate(new Timestamp(new Date().getTime()));
 		post =  dreamPostRepository.save(post);
 		return post;
 	}
 	
 	@Override
 	public DreamPost updatePost(DreamPost post) {
+		post.setModifiedDate(new Timestamp(new Date().getTime()));
 		post =  dreamPostRepository.save(post);
 		return post;
 	}

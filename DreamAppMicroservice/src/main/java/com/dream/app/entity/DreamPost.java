@@ -37,6 +37,9 @@ public class DreamPost {
 	  @Column(name = "Created_Date", length = 36, nullable = false)
 	  private Date createdDate;
 	  
+	  @Column(name = "Modified_Date", length = 36, nullable = false)
+	  private Date modifiedDate;
+	  
 	  @ManyToMany(fetch = FetchType.LAZY)
 	  @JoinTable(name = "Dream_Post_Keyword", joinColumns = { @JoinColumn(name = "Dream_Post_Id") }, 
 	  inverseJoinColumns = {@JoinColumn(name = "Keyword_Id") })
@@ -88,6 +91,14 @@ public class DreamPost {
 
 	public void setKeywords(Set<Keyword> keywords) {
 		this.keywords = keywords;
+	}
+
+	public Date getModifiedDate() {
+		return modifiedDate;
+	}
+
+	public void setModifiedDate(Date modifiedDate) {
+		this.modifiedDate = modifiedDate;
 	}
 	 
 }

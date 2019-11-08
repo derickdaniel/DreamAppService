@@ -1,6 +1,8 @@
 package com.dream.app.service;
 
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityNotFoundException;
@@ -11,8 +13,10 @@ import org.springframework.stereotype.Service;
 
 import com.dream.app.entity.AppUser;
 import com.dream.app.entity.PersonalNote;
+import com.dream.app.exception.AppUserNotFoundException;
 import com.dream.app.repository.AppUserRepository;
 import com.dream.app.repository.PersonalNoteRepository;
+import com.dream.app.util.PasswordUtil;
 
 @Service
 public class AppUserServiceImpl implements AppUserService{
@@ -26,13 +30,23 @@ public class AppUserServiceImpl implements AppUserService{
 			this.personalNoteRepository = personalNoteRepository;
 		}
 		
-		public AppUser registerUser(AppUser user) {
-			user = appUserRepository.save(user);
+		@Override
+		public AppUser registerUser(AppUser user) throws Exception {
+			user.setPassword(PasswordUtil.bycrypt(user.getPassword()));
+			user.setRole("USER");
+			user.setCreatedDate(new Timestamp(new Date().getTime()));
+			user.setModifiedDate(new Timestamp(new Date().getTime()));
+			user = this.save(user);
 			return user;
 		}
-
+		
 		@Override
-		public AppUser save(AppUser appUser) throws Exception {
+		public AppUser updateUser(AppUser appUser) throws Exception {
+			appUser.setModifiedDate(new Timestamp(new Date().getTime()));
+			return this.save(appUser);
+		}
+
+		private AppUser save(AppUser appUser) throws Exception {
 			try {
 				appUser = appUserRepository.save(appUser);
 			} catch (DataIntegrityViolationException e) {
@@ -44,13 +58,13 @@ public class AppUserServiceImpl implements AppUserService{
 		}
 
 		@Override
-		public AppUser getByUserName(String userName) {
-			 return appUserRepository.findByUserName(userName).orElseThrow(() -> new EntityNotFoundException(userName));
+		public AppUser getUserByUsername(String userName) {
+			 return appUserRepository.findByUsername(userName).orElseThrow(() -> new AppUserNotFoundException("user not found with username: "+userName));
 		}
-
+		
 		@Override
-		public AppUser update(AppUser appUser) throws Exception {
-			return this.save(appUser);
+		public AppUser getUserByEmail(String email) {
+			 return appUserRepository.findByEmail(email).orElseThrow(() -> new AppUserNotFoundException("user not found with email: "+email));
 		}
 
 		@Override

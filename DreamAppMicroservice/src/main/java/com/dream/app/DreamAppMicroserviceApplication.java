@@ -27,81 +27,83 @@ public class DreamAppMicroserviceApplication {
 		SpringApplication.run(DreamAppMicroserviceApplication.class, args);
 	}
 	
-	@Bean  
+	/*@Bean  
     ApplicationRunner init(AppUserService userService, DreamPostService dreamRepo) {  
         return args -> {
-        	AppUser user = userService.getByUserName("ddaniel");
+        	
+        	 //Create AppUser
+        	AppUser user = new AppUser();
+        	user.setFirstName("Derick");
+        	user.setLastName("Daniel");
+        	user.setUsername("ddaniel");
+        	user.setPhone("8123840741");
+        	user.setEmail("derickdaniel44@gmail.com");
+        	user.setPassword("derick123"); // to do
+        	System.out.println("User id is: "+user.getUserId());
+        	user = userService.registerUser(user);
+        	
+        	//Create Dream Post
+        	DreamPost post = new DreamPost();
+        	post.setAppUser(user);
+        	post.setTitle("My October Dream");
+        	post.setDescription("Its about staying awake rather than dreams in sleep! Just a thought.");
+        	post.setCreatedDate(new Date());
+        	post =  dreamRepo.createPost(post);
+        	System.out.println("Dream post created with id: "+post.getPostId());
+        	
+        	//create comment
+        	Comment comment = new Comment();
+        	comment.setAppUser(user);
+        	comment.setDreamPost(post);
+        	comment.setText("Amazing Post. Thank You");
+        	comment.setCreatedDate(new Date());
+        	dreamRepo.saveComment(comment);
+        	System.out.println("comment created on post: "+ post.getTitle() + " with comment id: "+comment.getCommentId());
+        	
+        	
+        	AppUser appUser = userService.getUserByEmail("derickdaniel44@gmail.com");
         	
         	//create note
-        	PersonalNote note = new PersonalNote();
-        	note.setText("This is my personal note");
-        	note.setAppUser(user);
+        	//PersonalNote note = new PersonalNote();
+        	//note.setText("This is my personal note");
+        	//note.setAppUser(appUser);
         	//userService.savePersonalNote(note);
         	
-        	System.out.println("User found with id: "+user.getUserId() + "--");
+        	System.out.println("User found with id: "+appUser.getUserId() + "--");
         	System.out.println("----------------Dream Posts------------------");
-        	List<DreamPost> posts = dreamRepo.findPostByAppUser(user);
-        	List<PersonalNote> notes = userService.getPersonalNotesByAppUser(user);
+        	List<DreamPost> posts = dreamRepo.findPostByAppUser(appUser);
+        	List<PersonalNote> notes = userService.getPersonalNotesByAppUser(appUser);
         	System.out.println("User personal Notes");
         	for(PersonalNote pNote : notes) {
         		System.out.println(pNote.getText());
         	}
         	
         	//create keywords
-        	/*Keyword key1 = new Keyword();
+        	Keyword key1 = new Keyword();
         	key1.setName("MyDream");
         	key1.setDreamPosts(new HashSet<DreamPost>(posts));
         	Set<Keyword> keywords = new HashSet<>();
         	keywords.add(key1);
-        	dreamRepo.saveKeyword(key1);*/
+        	dreamRepo.saveKeyword(key1);
         	
-        	for(DreamPost post : posts) {
-        		//post.setKeywords(keywords);
-        		//dreamRepo.updatePost(post);
-        		System.out.println("Dream Post for user "+user.getUserName());
-        		System.out.println(post.getTitle());
-        		System.out.println(post.getDescription());
-        		System.out.println(post.getCreatedDate());
+        	for(DreamPost dream_post : posts) {
+        		dream_post.setKeywords(keywords);
+        		dreamRepo.updatePost(dream_post);
+        		System.out.println("Dream Post for user "+appUser.getUsername());
+        		System.out.println(dream_post.getTitle());
+        		System.out.println(dream_post.getDescription());
+        		System.out.println(dream_post.getCreatedDate());
         		System.out.println("Comments:");
         		System.out.println("----------");
-        		List<Comment> comments = dreamRepo.getCommentsByDreamPost(post);
-        		for(Comment comment : comments) {
-        			System.out.println(comment.getText());
-        			System.out.println("by "+comment.getAppUser().getUserName());
-        			System.out.println("on "+comment.getCreatedDate());
+        		List<Comment> comments = dreamRepo.getCommentsByDreamPost(dream_post);
+        		for(Comment post_comment : comments) {
+        			System.out.println(post_comment.getText());
+        			System.out.println("by "+post_comment.getAppUser().getUsername());
+        			System.out.println("on "+post_comment.getCreatedDate());
         		}
         	}
         	
-        	
-        	//create comment
-        	/*Comment comment = new Comment();
-        	comment.setAppUser(user);
-        	comment.setDreamPost(posts.get(1));
-        	comment.setText("Amazing Post. Thank You");
-        	comment.setCreatedDate(new Date());
-        	dreamRepo.saveComment(comment);
-        	System.out.println("comment created on post: "+ posts.get(1).getTitle() + " with comment id: "+comment.getCommentIid());*/
-        	
-        	//Create Dream Post
-        	/*DreamPost post = new DreamPost();
-        	post.setAppUser(user);
-        	post.setTitle("My October Dream");
-        	post.setDescription("Its about staying awake rather than dreams in sleep! Just a thought.");
-        	post.setCreatedDate(new Date());
-        	post =  dreamRepo.save(post);
-        	System.out.println("Dream post created with id: "+post.getPostId());*/
-        	
-        	/* //Create AppUser
-        	AppUser user = new AppUser();
-        	user.setFirstName("Derick");
-        	user.setLastName("Daniel");
-        	user.setUserName("ddaniel");
-        	user.setPhone("8123840741");
-        	user.setEmail("derickdaniel44@gmail.com");
-        	user.setEncrytedPassword("derick123"); // to do
-        	System.out.println("User id is: "+user.getUserId());
-        	user = userService.save(user);*/
         };  
-    }
+    }*/
 
 }
