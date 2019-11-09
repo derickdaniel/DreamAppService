@@ -15,6 +15,8 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+import com.dream.app.transferobject.CommentDTO;
+
 //import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -82,6 +84,16 @@ public class Comment {
 
 	public void setCreatedDate(Date createdDate) {
 		this.createdDate = createdDate;
+	}
+	
+	public CommentDTO populateCommentDTO() {
+		CommentDTO commentDTO = new CommentDTO();
+		commentDTO.setAppUser(this.getAppUser());
+		commentDTO.setCommentId(this.getCommentId());
+		commentDTO.setCreatedDate(this.getCreatedDate());
+		commentDTO.setDreamPost(this.getDreamPost());
+		commentDTO.setText(this.getText());
+		return commentDTO;
 	}
   
 }

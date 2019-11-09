@@ -7,6 +7,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class PersonalNote {
 	
@@ -20,6 +22,7 @@ public class PersonalNote {
 	
 	@ManyToOne
 	@JoinColumn(name = "App_User_ID")
+	@JsonIgnore
 	private AppUser appUser;
 
 	public Long getNoteId() {

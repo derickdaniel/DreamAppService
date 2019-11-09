@@ -16,10 +16,11 @@ import com.dream.app.entity.PersonalNote;
 import com.dream.app.exception.AppUserNotFoundException;
 import com.dream.app.repository.AppUserRepository;
 import com.dream.app.repository.PersonalNoteRepository;
+import com.dream.app.transferobject.PersonalNoteDTO;
 import com.dream.app.util.PasswordUtil;
 
 @Service
-public class AppUserServiceImpl implements AppUserService{
+public class AppUserServiceImpl implements AppUserService {
 	
 		private final AppUserRepository appUserRepository;
 		private final PersonalNoteRepository personalNoteRepository;
@@ -42,6 +43,13 @@ public class AppUserServiceImpl implements AppUserService{
 		
 		@Override
 		public AppUser updateUser(AppUser appUser) throws Exception {
+			AppUser existingUser  = this.getUserByUserId(appUser.getUserId());
+			if(existingUser == null) {
+				throw new AppUserNotFoundException("User not found with id: "+appUser.getUserId());
+			}
+			appUser.setPassword(PasswordUtil.bycrypt(appUser.getPassword()));
+			appUser.setRole(existingUser.getRole());
+			appUser.setCreatedDate(existingUser.getCreatedDate());
 			appUser.setModifiedDate(new Timestamp(new Date().getTime()));
 			return this.save(appUser);
 		}
@@ -51,10 +59,15 @@ public class AppUserServiceImpl implements AppUserService{
 				appUser = appUserRepository.save(appUser);
 			} catch (DataIntegrityViolationException e) {
 			    if (e.getMostSpecificCause().getClass().getName().equals("org.postgresql.util.PSQLException") && ((SQLException) e.getMostSpecificCause()).getSQLState().equals("23505"))
-			        throw new Exception("Username is already in use", e.getMostSpecificCause());
+			        throw new Exception("Username or email is already in use", e.getMostSpecificCause());
 			    throw e;
 			}	
 			return appUser;
+		}
+		
+		@Override
+		public AppUser getUserByUserId(Long userId) {
+			return appUserRepository.findByUserId(userId).orElseThrow(() -> new AppUserNotFoundException("user not found with user id: "+userId));
 		}
 
 		@Override
@@ -68,13 +81,17 @@ public class AppUserServiceImpl implements AppUserService{
 		}
 
 		@Override
-		public PersonalNote savePersonalNote(PersonalNote note) {
+		public PersonalNote savePersonalNote(PersonalNoteDTO noteDTO) {
+			PersonalNote note = noteDTO.populatePersonNote();
+			AppUser appUser = this.getUserByUserId(noteDTO.getUserId());
+			note.setAppUser(appUser);
 			note = personalNoteRepository.save(note);
 			return note;
 		}
 
 		@Override
-		public List<PersonalNote> getPersonalNotesByAppUser(AppUser appUser) {
+		public List<PersonalNote> getPersonalNotesByAppUserId(Long userId) {
+			AppUser appUser = this.getUserByUserId(userId);
 			List<PersonalNote> notes = personalNoteRepository.findByAppUser(appUser);
 			return notes;
 		}
