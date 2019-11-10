@@ -6,7 +6,6 @@ import com.dream.app.entity.AppUser;
 import com.dream.app.entity.Comment;
 import com.dream.app.entity.DreamPost;
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class CommentDTO {
 	
