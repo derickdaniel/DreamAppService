@@ -21,7 +21,6 @@ public class CommentDTO {
     @JsonBackReference
     private DreamPost dreamPost;
     
-    @JsonIgnore
     private AppUser appUser;
 
 	private Date createdDate;

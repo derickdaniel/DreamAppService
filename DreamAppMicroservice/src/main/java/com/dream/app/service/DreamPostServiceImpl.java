@@ -1,6 +1,7 @@
 package com.dream.app.service;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -142,9 +143,28 @@ public class DreamPostServiceImpl implements DreamPostService {
 	}
 
 	@Override
-	public DreamPost fetchMatchedDreamPosts(DreamPostDTO postDTO) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<DreamPost> findPostsByKeywords(List<String> keywords, long userId) {
+		appUserService.getUserByUserId(userId);
+		List<DreamPost> matchedDreams = new ArrayList<DreamPost>();
+		if(keywords != null && !keywords.isEmpty()) {
+			for(String keyword : keywords) {
+				if(keyword != null && keyword.length() != 0) {
+					List<DreamPost> matchedDreamPerKeyword = dreamPostRepository.findByKeywords_nameAndAppUser_userIdNot(keyword, userId);
+					matchedDreams.addAll(matchedDreamPerKeyword);
+				}
+			}
+		}		
+		return matchedDreams;
+	}
+
+	@Override
+	public void deleteComment(Long commentId) {
+		commentRepository.deleteById(commentId);
+	}
+
+	@Override
+	public List<DreamPost> getAllPosts() {
+		return dreamPostRepository.findAll();
 	}
 
 }

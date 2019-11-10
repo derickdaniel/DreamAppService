@@ -15,4 +15,5 @@ public interface AppUserService {
 	AppUser getUserByEmail(String email);
 	PersonalNote savePersonalNote(PersonalNoteDTO noteDTO);
 	List<PersonalNote> getPersonalNotesByAppUserId(Long userId);
+	void deletePersonalNote(Long personalNoteId);
 }

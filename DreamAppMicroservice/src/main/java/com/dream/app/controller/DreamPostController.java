@@ -1,6 +1,7 @@
 package com.dream.app.controller;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.dream.app.entity.AppUser;
 import com.dream.app.entity.Comment;
 import com.dream.app.entity.DreamPost;
-import com.dream.app.service.AppUserService;
 import com.dream.app.service.DreamPostService;
 import com.dream.app.transferobject.CommentDTO;
 import com.dream.app.transferobject.DreamPostDTO;
@@ -26,9 +26,6 @@ public class DreamPostController {
 	
 	@Autowired
 	private DreamPostService dreamPostService;
-	
-	@Autowired
-	private AppUserService appUserService;
 	
 	@RequestMapping(value="/createpost", method = RequestMethod.POST)
 	public DreamPostDTO createPost(@RequestBody DreamPostDTO dreamPostDTO) throws Exception {
@@ -54,6 +51,20 @@ public class DreamPostController {
 			dtoList.add(dto);
 		}
 		return dtoList;
+	}
+	
+	@RequestMapping(value="/getmatchedposts/{userId}", method = RequestMethod.POST,  produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<DreamPostDTO> getMatchedPosts(@PathVariable Long userId, @RequestBody List<String> keywords){
+		List<DreamPost> dreamPosts = dreamPostService.findPostsByKeywords(keywords, userId);
+		List<DreamPostDTO> dreamPostDtOs = new ArrayList<DreamPostDTO>();
+		for(DreamPost post : dreamPosts) {
+			DreamPostDTO dto = new DreamPostDTO();
+			//dto.setPostId(post.getPostId());
+			//dto.setTitle(post.getTitle());
+			dto = dto.populateDreamPostDTO(post);
+			dreamPostDtOs.add(dto);
+		}
+		return dreamPostDtOs;
 	}
 		
 	@RequestMapping(value="/addcomment", method = RequestMethod.POST)
@@ -89,6 +100,12 @@ public class DreamPostController {
 	@RequestMapping(value="/deletepostbypostid/{postId}", method = RequestMethod.GET)
 	public ResponseEntity<String> deletePost(@PathVariable Long postId) throws Exception {
 		dreamPostService.deletePostByPostId(postId);
+		return ResponseEntity.ok().build();
+	}
+	
+	@RequestMapping(value="/deletecomment/{commentId}", method = RequestMethod.GET)
+	public ResponseEntity<String> deleteComment(@PathVariable Long commentId) throws Exception {
+		dreamPostService.deleteComment(commentId);
 		return ResponseEntity.ok().build();
 	}
 		

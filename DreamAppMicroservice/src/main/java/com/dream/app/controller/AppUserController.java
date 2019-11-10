@@ -3,6 +3,7 @@ package com.dream.app.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,13 +22,6 @@ public class AppUserController {
 	
 	@Autowired
 	private AppUserService appUserService;
-	
-	@RequestMapping(value="/register", method = RequestMethod.POST)
-	public AppUser register(@RequestBody AppUserDTO appUserDTO) throws Exception {
-		AppUser appUser = appUserDTO.populateAppUser();
-		appUser = appUserService.registerUser(appUser);
-		return appUser;
-	}
 	
 	@RequestMapping(value="/updateuser", method = RequestMethod.POST)
 	public AppUser update(@RequestBody AppUserDTO appUserDTO) throws Exception {
@@ -48,10 +42,10 @@ public class AppUserController {
 		return notes;
 	}
 	
-	/*
-	  @RequestMapping(value="/getuser", method = RequestMethod.POST) public AppUser
-	  getUserByEmail(@RequestBody AppUserDTO appUserDTO) throws Exception { AppUser
-	  appUser = null; appUser =
-	  appUserService.getUserByEmail(appUserDTO.getEmail()); return appUser; }
-	 */
+	@RequestMapping(value="/deletenote/{noteId}", method = RequestMethod.GET)
+	public ResponseEntity<String> deleteNote(@PathVariable Long noteId) throws Exception {
+		appUserService.deletePersonalNote(noteId);
+		return ResponseEntity.ok().build();
+	}
+	
 }

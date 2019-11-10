@@ -1,5 +1,6 @@
 package com.dream.app;
 
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -25,6 +26,17 @@ public class DreamAppMicroserviceApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(DreamAppMicroserviceApplication.class, args);
+	}
+	
+	@Bean
+	ApplicationRunner init(DreamPostService serivce) {
+		return args -> {
+			/*
+			 * List<DreamPost> matchedDreams =
+			 * serivce.findPostsByKeywords(Arrays.asList("model", "mydream"), 52l);
+			 * for(DreamPost post : matchedDreams) { System.out.println(post.getTitle()); }
+			 */
+		};
 	}
 	
 	/*@Bean  

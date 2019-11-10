@@ -10,4 +10,5 @@ import com.dream.app.entity.DreamPost;
 public interface DreamPostRepository extends JpaRepository<DreamPost, Long>{
 	
 	List<DreamPost> findByAppUser(AppUser appUser);
+	List<DreamPost> findByKeywords_nameAndAppUser_userIdNot(String name, Long userId);
 }

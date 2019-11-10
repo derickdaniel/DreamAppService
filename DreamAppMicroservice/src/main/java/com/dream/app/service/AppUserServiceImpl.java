@@ -34,7 +34,15 @@ public class AppUserServiceImpl implements AppUserService {
 		@Override
 		public AppUser registerUser(AppUser user) throws Exception {
 			user.setPassword(PasswordUtil.bycrypt(user.getPassword()));
-			user.setRole("USER");
+			if(user.getRole() != null && !user.getRole().isEmpty()) {
+				if(user.getRole().equalsIgnoreCase("ADMIN")) {
+					user.setRole("ADMIN");
+				}else {
+					user.setRole("USER");
+				}
+			}else{
+				user.setRole("USER");
+			}
 			user.setCreatedDate(new Timestamp(new Date().getTime()));
 			user.setModifiedDate(new Timestamp(new Date().getTime()));
 			user = this.save(user);
@@ -94,6 +102,11 @@ public class AppUserServiceImpl implements AppUserService {
 			AppUser appUser = this.getUserByUserId(userId);
 			List<PersonalNote> notes = personalNoteRepository.findByAppUser(appUser);
 			return notes;
+		}
+
+		@Override
+		public void deletePersonalNote(Long personalNoteId) {
+			personalNoteRepository.deleteById(personalNoteId);
 		}
 
 }

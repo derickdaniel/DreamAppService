@@ -12,14 +12,16 @@ import com.dream.app.transferobject.DreamPostDTO;
 public interface DreamPostService {
 	
 	List<DreamPost> findPostByAppUser(AppUser appUser);
+	List<DreamPost> getAllPosts();
 	DreamPost createPost(DreamPostDTO postDTO);
 	DreamPost updatePost(DreamPostDTO postDTO);
-	DreamPost fetchMatchedDreamPosts(DreamPostDTO postDTO);
+	List<DreamPost> findPostsByKeywords(List<String> keyrowds, long userId);
 	void deletePostByPostId(Long postId);
 	Comment addComment(CommentDTO commentDTO);
 	Keyword saveKeyword(Keyword keyword);
 	Keyword getKeywordByName(String name);
 	List<Comment> getCommentsByDreamPostId(Long postId);
 	List<Comment> getCommentsByAppUserId(Long userId);
+	void deleteComment(Long commentId);
 
 }
