@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b31f9799-93a1-4efa-a755-854d891a8412" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/datingapp/datingapp/DatingappbackendApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datingapp/datingapp/BackendApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/datingapp/datingapp/config/SecurityConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/datingapp/datingapp/controller/AuthenticationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datingapp/datingapp/controller/AuthenticationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/datingapp/datingapp/controller/MatchController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/datingapp/datingapp/controller/RegistrationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datingapp/datingapp/controller/RegistrationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/datingapp/datingapp/dao/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datingapp/datingapp/dao/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/datingapp/datingapp/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datingapp/datingapp/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/datingapp/datingapp/DatingappbackendApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/datingapp/datingapp/BackendApplicationTests.java" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageViewManager">
+    <option name="myElementSize" value="128" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1T9ppYxKZUge4xXcwoCfDK1bO3R" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="sql.code.style.group" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.datingapp.datingapp" />
+    </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.datingapp.datingapp.service" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="DatingappbackendApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="datingapp" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.datingapp.datingapp.BackendApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b31f9799-93a1-4efa-a755-854d891a8412" name="Default Changelist" comment="" />
+      <created>1572882348473</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1572882348473</updated>
+      <workItem from="1572882350682" duration="2261000" />
+      <workItem from="1572899582189" duration="11096000" />
+      <workItem from="1572963927535" duration="5108000" />
+      <workItem from="1573030124720" duration="12529000" />
+      <workItem from="1573063781243" duration="17223000" />
+      <workItem from="1573117807143" duration="17686000" />
+      <workItem from="1573161726045" duration="2847000" />
+      <workItem from="1573218094295" duration="2419000" />
+      <workItem from="1573250563084" duration="3565000" />
+      <workItem from="1573291647497" duration="1877000" />
+      <workItem from="1573306246505" duration="7410000" />
+      <workItem from="1573396148551" duration="1179000" />
+      <workItem from="1573426535697" duration="3693000" />
+      <workItem from="1573472088931" duration="3989000" />
+      <workItem from="1573593025279" duration="9947000" />
+      <workItem from="1573730802382" duration="3124000" />
+      <workItem from="1573819969796" duration="9865000" />
+      <workItem from="1573867199675" duration="213000" />
+      <workItem from="1573904729827" duration="1125000" />
+      <workItem from="1573912735598" duration="6630000" />
+      <workItem from="1574165425881" duration="960000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/datingapp$DatingappbackendApplication.ic" NAME="DatingappbackendApplication Coverage Results" MODIFIED="1573073842066" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
+</project>

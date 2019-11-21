@@ -31,8 +31,8 @@ public class PasswordUtil {
 	}
 	
 	public static void main(String[] args) {
-		System.out.println(encrypt("$2a$10$E9LYGnuvNk6jAOjuF7SUo.FJL7BRzbdkxw2h52r0QwEc1Z4hczYLu"));
-		System.out.println(bycrypt("$2a$10$E9LYGnuvNk6jAOjuF7SUo.FJL7BRzbdkxw2h52r0QwEc1Z4hczYLu"));
+		System.out.println("encrypted: "+encrypt("$2a$10$GkJyckBMkRtjIMI8yih5xeE0waGZUFOFJqS4wK0TXSo.KppnGzWim"));
+		System.out.println("bycrypted: "+bycrypt("12345678"));
 	}
 
 }
